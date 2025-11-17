@@ -1,4 +1,4 @@
-import * as yup from "yup"
+import * as yup from 'yup'
 
 export const pacoteServicosValidationSchema = yup.object({
   id: yup.number().integer(),
