@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import { api } from '@/composables/api'
 import type { CategoriaServico } from '@/models/categoria-servico-model'
 
-const endpoint: string = '/servicos/categorias/'
+const endpoint: string = '/categorias-servico'
 
 const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   async function fetchCategoriasServico() {
-    const { data, statusCode } = await api(`${endpoint}`).get()
+    const { data, statusCode } = await api(`${endpoint}`).get().json<Array<CategoriaServico>>()
 
     return {
       data,
@@ -15,7 +15,7 @@ const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   }
 
   async function getCategoriaServico(id: number) {
-    const { data, statusCode } = await api(`${endpoint}/${id}`).get()
+    const { data, statusCode } = await api(`${endpoint}/${id}`).get().json<CategoriaServico>()
 
     return {
       data,
@@ -24,7 +24,7 @@ const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   }
 
   async function createCategoriaServico(payload: CategoriaServico) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload)
+    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
 
     return {
       data,
@@ -33,7 +33,7 @@ const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   }
 
   async function updateCategoriaServico(payload: CategoriaServico) {
-    const { data, statusCode } = await api(`${endpoint}`).put(payload)
+    const { data, statusCode } = await api(`${endpoint}`).patch(payload).json()
 
     return {
       data,
@@ -42,7 +42,7 @@ const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   }
 
   async function deleteCategoriaServico(id: number) {
-    const { data, statusCode } = await api(`${endpoint}`).delete(id)
+    const { data, statusCode } = await api(`${endpoint}`).delete(id).json()
 
     return {
       data,
