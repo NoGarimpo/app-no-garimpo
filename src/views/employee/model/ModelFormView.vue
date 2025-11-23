@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Form } from 'vee-validate'
 import type { Modelo } from '@/models/modelo-model'
 import type { Marca } from '@/models/marca-model'
 import { useModeloStore } from '@/stores/modelo-store'
 import { useMarcaStore } from '@/stores/marca-store'
 import { toast } from 'vue3-toastify'
 import type { SelectOption } from '@/utils/html-select-utils'
+import { modeloValidationSchema } from '@/schemas/modelo-validation-schemas'
 
 const modeloStore = useModeloStore()
 const marcaStore = useMarcaStore()
@@ -14,7 +14,6 @@ const marcaStore = useMarcaStore()
 const modeloFormValues = ref<Modelo>({
   nome: '',
   ativo: true,
-  fkMarca: 0,
 })
 
 const brandOptions = ref<Array<SelectOption>>([])
@@ -42,23 +41,20 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Form class="flex flex-col gap-4" :initial-values="modeloFormValues" @submit="handleSubmit">
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl text-primary font-extrabold">Cadastro de Modelos</h1>
-      <ButtonComponent
-        type="submit"
-        label="Cadastrar"
-        icon="lucide:plus"
-        class="bg-primary rounded-md text-white"
+  <FormComponent
+    title="Cadastro de Modelos"
+    :initial-form-values="modeloFormValues"
+    :form-validation-schema="modeloValidationSchema"
+    :handle-submit="handleSubmit"
+  >
+    <template #fields>
+      <FormFieldComponent label="Nome:" type="text" name="nome" />
+      <FormFieldComponent
+        label="Marca:"
+        name="fkMarca"
+        variant="select"
+        :select-options="brandOptions"
       />
-    </div>
-
-    <FormFieldComponent label="Nome:" type="text" name="nome" />
-    <FormFieldComponent
-      label="Marca:"
-      name="fkMarca"
-      variant="select"
-      :select-options="brandOptions"
-    />
-  </Form>
+    </template>
+  </FormComponent>
 </template>

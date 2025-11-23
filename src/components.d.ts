@@ -13,10 +13,13 @@ declare module 'vue' {
   export interface GlobalComponents {
     BrandsTableComponent: typeof import('./components/tables/BrandsTableComponent.vue')['default']
     ButtonComponent: typeof import('./components/ButtonComponent.vue')['default']
+    FormComponent: typeof import('./components/forms/FormComponent.vue')['default']
     FormFieldComponent: typeof import('./components/forms/FormFieldComponent.vue')['default']
     MenuItemComponent: typeof import('./components/menu/MenuItemComponent.vue')['default']
     ModelsTableComponent: typeof import('./components/tables/ModelsTableComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ServiceCategoriesTableComponent: typeof import('./components/tables/ServiceCategoriesTableComponent.vue')['default']
+    TableComponent: typeof import('./components/tables/TableComponent.vue')['default']
   }
 }

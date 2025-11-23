@@ -4,13 +4,18 @@ import type { MenuItem } from '@/models/menu-item-model'
 
 const menuItems = ref<Array<MenuItem>>([
   {
+    label: 'Categorias de Serviços',
+    icon: 'lucide:layers',
+    route: { name: 'serviceCategories' },
+  },
+  {
     label: 'Marcas',
     icon: 'lucide:tag',
     route: { name: 'brands' },
   },
   {
     label: 'Modelos',
-    icon: 'lucide:layers',
+    icon: 'lucide:tags',
     route: { name: 'models' },
   },
 ])

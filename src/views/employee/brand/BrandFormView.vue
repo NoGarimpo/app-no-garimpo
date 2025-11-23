@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Form } from 'vee-validate'
 import type { Marca } from '@/models/marca-model'
 import { useMarcaStore } from '@/stores/marca-store'
 import { toast } from 'vue3-toastify'
+import { marcaValidationSchema } from '@/schemas/marca-validation-schemas'
 
 const marcaStore = useMarcaStore()
 
@@ -24,17 +24,14 @@ async function handleSubmit(values: object) {
 </script>
 
 <template>
-  <Form class="flex flex-col gap-4" :initial-values="marcaFormValues" @submit="handleSubmit">
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl text-primary font-extrabold">Cadastro de Marcas</h1>
-      <ButtonComponent
-        type="submit"
-        label="Cadastrar"
-        icon="lucide:plus"
-        class="bg-primary rounded-md text-white"
-      />
-    </div>
-
-    <FormFieldComponent label="Nome:" type="text" name="nome" />
-  </Form>
+  <FormComponent
+    title="Cadastro de Marcas"
+    :initial-form-values="marcaFormValues"
+    :form-validation-schema="marcaValidationSchema"
+    :handle-submit="handleSubmit"
+  >
+    <template #fields>
+      <FormFieldComponent label="Nome:" type="text" name="nome" />
+    </template>
+  </FormComponent>
 </template>
