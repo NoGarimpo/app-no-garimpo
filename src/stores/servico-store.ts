@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import { api } from '@/composables/api'
 import type { Servico } from '@/models/servico-model'
 
-const endpoint: string = '/servicos/'
+const endpoint: string = '/servicos'
 
 const useServicoStore = defineStore('Servico', () => {
   async function fetchServicos() {
-    const { data, statusCode } = await api(`${endpoint}`).get()
+    const { data, statusCode } = await api(`${endpoint}`).get().json<Array<Servico>>()
 
     return {
       data,
@@ -15,7 +15,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function getServico(id: number) {
-    const { data, statusCode } = await api(`${endpoint}/${id}`).get()
+    const { data, statusCode } = await api(`${endpoint}/${id}`).get().json<Servico>()
 
     return {
       data,
@@ -24,7 +24,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function createServico(payload: Servico) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload)
+    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
 
     return {
       data,
@@ -33,7 +33,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function updateServico(payload: Servico) {
-    const { data, statusCode } = await api(`${endpoint}`).put(payload)
+    const { data, statusCode } = await api(`${endpoint}`).put(payload).json()
 
     return {
       data,
@@ -42,7 +42,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function deleteServico(id: number) {
-    const { data, statusCode } = await api(`${endpoint}`).delete(id)
+    const { data, statusCode } = await api(`${endpoint}`).delete(id).json()
 
     return {
       data,
