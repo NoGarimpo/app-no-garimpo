@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import { api } from '@/composables/api'
 import type { TipoVeiculo } from '@/models/tipo-veiculo-model'
 
-const endpoint: string = '/veiculos/tipos/'
+const endpoint: string = '/tipos-veiculo'
 
 const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   async function fetchTiposVeiculo() {
-    const { data, statusCode } = await api(`${endpoint}`).get()
+    const { data, statusCode } = await api(`${endpoint}`).get().json<Array<TipoVeiculo>>()
 
     return {
       data,
@@ -15,7 +15,7 @@ const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   }
 
   async function getTipoVeiculo(id: number) {
-    const { data, statusCode } = await api(`${endpoint}/${id}`).get()
+    const { data, statusCode } = await api(`${endpoint}/${id}`).get().json<TipoVeiculo>()
 
     return {
       data,
@@ -24,7 +24,7 @@ const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   }
 
   async function createTipoVeiculo(payload: TipoVeiculo) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload)
+    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
 
     return {
       data,
@@ -33,7 +33,7 @@ const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   }
 
   async function updateTipoVeiculo(payload: TipoVeiculo) {
-    const { data, statusCode } = await api(`${endpoint}`).put(payload)
+    const { data, statusCode } = await api(`${endpoint}`).patch(payload).json()
 
     return {
       data,
@@ -42,7 +42,7 @@ const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   }
 
   async function deleteTipoVeiculo(id: number) {
-    const { data, statusCode } = await api(`${endpoint}`).delete(id)
+    const { data, statusCode } = await api(`${endpoint}`).delete(id).json()
 
     return {
       data,

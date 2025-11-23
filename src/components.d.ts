@@ -15,6 +15,7 @@ declare module 'vue' {
     ButtonComponent: typeof import('./components/ButtonComponent.vue')['default']
     FormFieldComponent: typeof import('./components/forms/FormFieldComponent.vue')['default']
     MenuItemComponent: typeof import('./components/menu/MenuItemComponent.vue')['default']
+    ModelsTableComponent: typeof import('./components/tables/ModelsTableComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

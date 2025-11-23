@@ -55,6 +55,12 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/employee/models/ModelsListView.vue'),
         meta: { title: 'Listagem de Modelos', requiresAuth: true },
       },
+      {
+        path: 'models/new',
+        name: 'newModel',
+        component: () => import('@/views/employee/models/ModelFormView.vue'),
+        meta: { title: 'Cadastro de Modelos', requiresAuth: true },
+      },
     ],
   },
 ]

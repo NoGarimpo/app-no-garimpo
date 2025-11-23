@@ -33,7 +33,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function updateServico(payload: Servico) {
-    const { data, statusCode } = await api(`${endpoint}`).put(payload).json()
+    const { data, statusCode } = await api(`${endpoint}`).patch(payload).json()
 
     return {
       data,

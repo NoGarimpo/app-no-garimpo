@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
-type buttonType = 'submit' | 'reset' | 'button' | 'link'
-
 const buttonClasses =
   'flex items-center justify-center gap-2 text-lg font-bold px-4 py-2 hover:cursor-pointer'
 
 const props = withDefaults(
   defineProps<{
     class?: string
-    type?: buttonType
+    type?: 'submit' | 'reset' | 'button' | 'link'
     label: string
     icon?: string | null
     route?: {
