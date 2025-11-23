@@ -28,10 +28,22 @@ const useAuthStore = defineStore('Auth', () => {
     }
   }
 
+  async function logout() {
+    const { data, statusCode } = await api(`${endpoint}/logout`).post().json()
+
+    loginToken.value = ''
+
+    return {
+      data,
+      statusCode,
+    }
+  }
+
   return {
     loginToken,
     register,
     login,
+    logout,
   }
 })
 
