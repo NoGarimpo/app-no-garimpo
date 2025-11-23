@@ -26,4 +26,35 @@ export const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: '/employee',
+    component: () => import('@/layouts/EmployeeLayout.vue'),
+    redirect: { name: 'employeeHome' },
+    children: [
+      {
+        path: '',
+        name: 'employeeHome',
+        component: () => import('@/views/employee/EmployeeHomeView.vue'),
+        meta: { title: 'Área de Funcionários', requiresAuth: true },
+      },
+      {
+        path: 'brands',
+        name: 'brands',
+        component: () => import('@/views/employee/brands/BrandsListView.vue'),
+        meta: { title: 'Listagem de Marcas', requiresAuth: true },
+      },
+      {
+        path: 'brands/new',
+        name: 'newBrand',
+        component: () => import('@/views/employee/brands/BrandFormView.vue'),
+        meta: { title: 'Cadastro de Marcas', requiresAuth: true },
+      },
+      {
+        path: 'models',
+        name: 'models',
+        component: () => import('@/views/employee/models/ModelsListView.vue'),
+        meta: { title: 'Listagem de Modelos', requiresAuth: true },
+      },
+    ],
+  },
 ]

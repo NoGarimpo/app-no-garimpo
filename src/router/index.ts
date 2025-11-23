@@ -11,9 +11,7 @@ router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
 
   if (Boolean(to.meta.requiresAuth) && authStore.loginToken === '') {
-    next(false)
-
-    return
+    next({ name: 'home' })
   }
 
   document.title = String(to.meta.title).concat(' | No Garimpo')

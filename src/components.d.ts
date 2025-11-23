@@ -11,8 +11,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BrandsTableComponent: typeof import('./components/tables/BrandsTableComponent.vue')['default']
     ButtonComponent: typeof import('./components/ButtonComponent.vue')['default']
-    FormFieldComponent: typeof import('./components/FormFieldComponent.vue')['default']
+    FormFieldComponent: typeof import('./components/forms/FormFieldComponent.vue')['default']
+    MenuItemComponent: typeof import('./components/menu/MenuItemComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
