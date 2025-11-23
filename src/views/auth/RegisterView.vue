@@ -5,9 +5,6 @@ import { registerValidationSchema } from '@/schemas/auth-validation-schemas'
 import type { Register } from '@/models/auth-model'
 import { useAuthStore } from '@/stores/auth-store'
 
-import FormFieldComponent from '@/components/FormFieldComponent.vue'
-import ButtonComponent from '@/components/ButtonComponent.vue'
-
 const authStore = useAuthStore()
 
 const registerFormValues = ref<Register>({

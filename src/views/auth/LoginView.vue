@@ -4,9 +4,6 @@ import { Form } from 'vee-validate'
 import { loginValidationSchema } from '@/schemas/auth-validation-schemas'
 import type { Login } from '@/models/auth-model'
 import { useAuthStore } from '@/stores/auth-store'
-
-import FormFieldComponent from '@/components/FormFieldComponent.vue'
-import ButtonComponent from '@/components/ButtonComponent.vue'
 import { toast } from 'vue3-toastify'
 
 const authStore = useAuthStore()

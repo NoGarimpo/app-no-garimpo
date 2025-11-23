@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import { Icon } from '@iconify/vue'
 
 type buttonType = 'submit' | 'reset' | 'button' | 'link'
