@@ -1,5 +1,5 @@
 export interface TipoVeiculo {
-  id: number
+  id?: number
   nome: string
   descricao: string
   ativo: boolean

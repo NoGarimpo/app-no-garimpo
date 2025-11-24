@@ -2,7 +2,7 @@
 import type { CategoriaServico } from '@/models/categoria-servico-model'
 
 const props = defineProps<{
-  serviceCategories: Array<CategoriaServico>
+  servicesCategories: Array<CategoriaServico>
 }>()
 </script>
 
@@ -18,10 +18,13 @@ const props = defineProps<{
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(serviceCategory, index) in props.serviceCategories" :key="serviceCategory.id">
+        <tr
+          v-for="(servicesCategory, index) in props.servicesCategories"
+          :key="servicesCategory.id"
+        >
           <td>{{ index + 1 }}</td>
-          <td>{{ serviceCategory.nome }}</td>
-          <td>{{ serviceCategory.descricao }}</td>
+          <td>{{ servicesCategory.nome }}</td>
+          <td>{{ servicesCategory.descricao }}</td>
           <td>Sim</td>
         </tr>
       </tbody>

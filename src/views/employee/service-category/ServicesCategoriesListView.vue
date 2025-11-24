@@ -5,27 +5,27 @@ import type { CategoriaServico } from '@/models/categoria-servico-model'
 
 const categoriaServicoStore = useCategoriaServicoStore()
 
-const serviceCategories = ref<Array<CategoriaServico>>([])
+const servicesCategories = ref<Array<CategoriaServico>>([])
 
 onMounted(async () => {
   const { data, statusCode } = await categoriaServicoStore.fetchCategoriasServico()
 
   if (statusCode.value === 200) {
-    serviceCategories.value = data.value as Array<CategoriaServico>
+    servicesCategories.value = data.value as Array<CategoriaServico>
   } else {
-    serviceCategories.value = []
+    servicesCategories.value = []
   }
 })
 </script>
 
 <template>
   <TableComponent
-    title="Listagem de Categorias de Serviço"
-    button-label="Nova Categoria de Serviço"
-    :registration-route="{ name: 'newServiceCategory' }"
+    title="Listagem de Categorias de Serviços"
+    button-label="Nova Categoria de Serviços"
+    :registration-route="{ name: 'newServicesCategory' }"
   >
     <template #table>
-      <ServiceCategoriesTableComponent :service-categories="serviceCategories" />
+      <ServicesCategoriesTableComponent :services-categories="servicesCategories" />
     </template>
   </TableComponent>
 </template>

@@ -24,7 +24,7 @@ const useTipoVeiculoStore = defineStore('TipoVeiculo', () => {
   }
 
   async function createTipoVeiculo(payload: TipoVeiculo) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+    const { data, statusCode } = await api(`${endpoint}/criarTipo`).post(payload).json()
 
     return {
       data,
