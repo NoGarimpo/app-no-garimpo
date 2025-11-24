@@ -1,5 +1,6 @@
 export interface Modelo {
-  id: number
+  id?: number
   nome: string
   ativo: boolean
+  fkMarca?: number
 }

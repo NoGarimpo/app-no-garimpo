@@ -6,7 +6,7 @@ const endpoint: string = '/servicos/pacotes/'
 
 const usePacoteServicosStore = defineStore('PacoteServicos', () => {
   async function fetchPacotesServicos() {
-    const { data, statusCode } = await api(`${endpoint}`).get()
+    const { data, statusCode } = await api(`${endpoint}`).get().json<Array<PacoteServicos>>()
 
     return {
       data,
@@ -15,7 +15,7 @@ const usePacoteServicosStore = defineStore('PacoteServicos', () => {
   }
 
   async function getPacoteServicos(id: number) {
-    const { data, statusCode } = await api(`${endpoint}/${id}`).get()
+    const { data, statusCode } = await api(`${endpoint}/${id}`).get().json<PacoteServicos>()
 
     return {
       data,
@@ -24,7 +24,7 @@ const usePacoteServicosStore = defineStore('PacoteServicos', () => {
   }
 
   async function createPacoteServicos(payload: PacoteServicos) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload)
+    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
 
     return {
       data,
@@ -33,7 +33,7 @@ const usePacoteServicosStore = defineStore('PacoteServicos', () => {
   }
 
   async function updatePacoteServicos(payload: PacoteServicos) {
-    const { data, statusCode } = await api(`${endpoint}`).put(payload)
+    const { data, statusCode } = await api(`${endpoint}`).patch(payload).json()
 
     return {
       data,
@@ -42,7 +42,7 @@ const usePacoteServicosStore = defineStore('PacoteServicos', () => {
   }
 
   async function deletePacoteServicos(id: number) {
-    const { data, statusCode } = await api(`${endpoint}`).delete(id)
+    const { data, statusCode } = await api(`${endpoint}`).delete(id).json()
 
     return {
       data,
