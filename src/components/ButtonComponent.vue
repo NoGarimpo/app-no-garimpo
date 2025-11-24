@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue'
 
 const buttonClasses =
-  'flex items-center justify-center gap-2 font-bold px-4 py-1 hover:cursor-pointer'
+  'flex items-center justify-center gap-2 font-bold px-4 py-2 hover:cursor-pointer'
 
 const props = withDefaults(
   defineProps<{

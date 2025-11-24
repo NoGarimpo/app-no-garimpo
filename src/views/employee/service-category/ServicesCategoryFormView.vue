@@ -3,18 +3,18 @@ import { ref } from 'vue'
 import type { CategoriaServico } from '@/models/categoria-servico-model'
 import { useCategoriaServicoStore } from '@/stores/categoria-servico-store'
 import { toast } from 'vue3-toastify'
-import { categoriaServicoValidationSchema } from '@/schemas/categoria-servico-validation-schemas'
+import { categoriaServicosValidationSchema } from '@/schemas/categoria-servicos-validation-schemas'
 
-const categoriaServicoStore = useCategoriaServicoStore()
+const categoriaServicosStore = useCategoriaServicoStore()
 
-const categoriaServicoFormValues = ref<CategoriaServico>({
+const categoriaServicosFormValues = ref<CategoriaServico>({
   nome: '',
   descricao: 'Nenhuma observação.',
   ativa: true,
 })
 
 async function handleSubmit(values: object) {
-  const { statusCode } = await categoriaServicoStore.createCategoriaServico(
+  const { statusCode } = await categoriaServicosStore.createCategoriaServico(
     values as CategoriaServico,
   )
 
@@ -28,9 +28,9 @@ async function handleSubmit(values: object) {
 
 <template>
   <FormComponent
-    title="Cadastro de Categoria de Serviço"
-    :initial-form-values="categoriaServicoFormValues"
-    :form-validation-schema="categoriaServicoValidationSchema"
+    title="Cadastro de Categoria de Serviços"
+    :initial-form-values="categoriaServicosFormValues"
+    :form-validation-schema="categoriaServicosValidationSchema"
     :handle-submit="handleSubmit"
   >
     <template #fields>

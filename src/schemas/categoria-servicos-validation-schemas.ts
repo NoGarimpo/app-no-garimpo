@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-export const categoriaServicoValidationSchema = yup.object({
+export const categoriaServicosValidationSchema = yup.object({
   id: yup.number().integer(),
   nome: yup.string().required('Campo obrigatório!'),
   descricao: yup.string().notRequired(),

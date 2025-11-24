@@ -6,7 +6,7 @@ const menuItems = ref<Array<MenuItem>>([
   {
     label: 'Categorias de Serviços',
     icon: 'lucide:layers',
-    route: { name: 'serviceCategories' },
+    route: { name: 'servicesCategories' },
   },
   {
     label: 'Marcas',
@@ -17,6 +17,11 @@ const menuItems = ref<Array<MenuItem>>([
     label: 'Modelos',
     icon: 'lucide:tags',
     route: { name: 'models' },
+  },
+  {
+    label: 'Tipos de Veículos',
+    icon: 'lucide:layers',
+    route: { name: 'vehiclesTypes' },
   },
 ])
 </script>
