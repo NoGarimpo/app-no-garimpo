@@ -1,5 +1,5 @@
 export interface CategoriaServico {
-  id: number
+  id?: number
   nome: string
   descricao: string
   ativa: boolean

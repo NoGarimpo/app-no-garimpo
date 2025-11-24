@@ -24,7 +24,7 @@ const useCategoriaServicoStore = defineStore('CategoriaServico', () => {
   }
 
   async function createCategoriaServico(payload: CategoriaServico) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+    const { data, statusCode } = await api(`${endpoint}/criarCategoria`).post(payload).json()
 
     return {
       data,

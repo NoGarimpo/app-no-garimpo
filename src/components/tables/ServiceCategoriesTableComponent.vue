@@ -1,0 +1,30 @@
+<script setup lang="ts">
+import type { CategoriaServico } from '@/models/categoria-servico-model'
+
+const props = defineProps<{
+  serviceCategories: Array<CategoriaServico>
+}>()
+</script>
+
+<template>
+  <div class="bg-base-100 border border-base-content rounded-box overflow-x-auto">
+    <table class="table table-lg">
+      <thead class="text-lg text-base-content font-bold">
+        <tr>
+          <th>Nº Linha</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Ativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(serviceCategory, index) in props.serviceCategories" :key="serviceCategory.id">
+          <td>{{ index + 1 }}</td>
+          <td>{{ serviceCategory.nome }}</td>
+          <td>{{ serviceCategory.descricao }}</td>
+          <td>Sim</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>

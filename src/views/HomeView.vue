@@ -34,16 +34,31 @@ onMounted(async () => {
       />
     </div>
   </section>
-  <section class="w-full min-h-full flex flex-col items-center justify-start gap-4 p-4">
+  <section class="w-full min-h-full flex flex-col items-center justify-start gap-8 p-4">
     <h1 class="text-3xl text-primary font-extrabold">Serviços</h1>
-    <div class="w-full h-full grid grid-cols-1 gap-4">
+    <div class="w-full h-full grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       <div
-        v-for="service in services"
+        v-for="(service, index) in services"
         :key="service.id"
-        class="flex flex-col gap-2 border border-base-content rounded-md p-2"
+        class="flex flex-col gap-2 border border-base-content rounded-md overflow-hidden"
       >
-        <h2 class="text-xl font-bold">{{ service.nome }}</h2>
-        <p>{{ service.descricao }}</p>
+        <img
+          class="w-full h-40 object-cover"
+          src="/images/services/polimento.svg"
+          :alt="`banner-image-${index}`"
+        />
+        <div class="w-full flex flex-col items-start justify-start gap-4 p-2">
+          <div class="w-full flex items-center justify-between">
+            <h2 class="text-xl font-bold">{{ service.nome }}</h2>
+            <ButtonComponent
+              type="button"
+              label="Agendar"
+              icon="lucide:calendar"
+              class="bg-primary rounded-md text-white"
+            />
+          </div>
+          <p>{{ service.descricao }}</p>
+        </div>
       </div>
     </div>
   </section>

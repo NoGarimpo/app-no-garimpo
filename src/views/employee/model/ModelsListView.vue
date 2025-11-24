@@ -15,10 +15,12 @@ const models = ref<Array<Modelo>>([])
 const brandOptions = ref<Array<SelectOption>>([])
 
 async function loadBrandModels() {
-  const { data } = await modeloStore.fetchModelos(brandCode.value)
+  const { data, statusCode } = await modeloStore.fetchModelos(brandCode.value)
 
-  if (data.value) {
-    models.value = data.value
+  if (statusCode.value === 200) {
+    models.value = data.value as Array<Modelo>
+  } else {
+    models.value = []
   }
 }
 
@@ -44,25 +46,21 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="flex items-center justify-between">
-      <h1 class="text-3xl text-primary font-extrabold">Listagem de Modelos</h1>
-      <ButtonComponent
-        type="link"
-        label="Novo Modelo"
-        icon="lucide:plus"
-        :route="{ name: 'newModel' }"
-        class="bg-primary rounded-md text-white"
+  <TableComponent
+    title="Listagem de Modelos"
+    button-label="Novo Modelo"
+    :registration-route="{ name: 'newModel' }"
+  >
+    <template #table>
+      <FormFieldComponent
+        label="Marca:"
+        name="fkMarca"
+        variant="select"
+        :select-options="brandOptions"
+        :initial-value="brandCode"
+        @update-selected-option="brandCode = Number($event)"
       />
-    </div>
-    <FormFieldComponent
-      label="Marca:"
-      name="fkMarca"
-      variant="select"
-      :select-options="brandOptions"
-      :initial-value="brandCode"
-      @update-selected-option="brandCode = Number($event)"
-    />
-    <ModelsTableComponent :models="models" />
-  </div>
+      <ModelsTableComponent :models="models" />
+    </template>
+  </TableComponent>
 </template>
