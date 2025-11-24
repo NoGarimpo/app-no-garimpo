@@ -21,7 +21,7 @@ onMounted(async () => {
 <template>
   <TableComponent
     title="Listagem de Categorias de Serviço"
-    module="Categoria de Serviço"
+    button-label="Nova Categoria de Serviço"
     :registration-route="{ name: 'newServiceCategory' }"
   >
     <template #table>

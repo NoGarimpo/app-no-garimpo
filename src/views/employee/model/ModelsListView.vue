@@ -48,7 +48,7 @@ onMounted(async () => {
 <template>
   <TableComponent
     title="Listagem de Modelos"
-    module="Modelo"
+    button-label="Novo Modelo"
     :registration-route="{ name: 'newModel' }"
   >
     <template #table>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   title: string
-  module: string
+  buttonLabel: string
   registrationRoute: { name: string }
 }>()
 </script>
@@ -12,7 +12,7 @@ const props = defineProps<{
       <h1 class="text-3xl text-primary font-extrabold">{{ props.title }}</h1>
       <ButtonComponent
         type="link"
-        :label="`Nova ${props.module}`"
+        :label="props.buttonLabel"
         icon="lucide:plus"
         :route="props.registrationRoute"
         class="bg-primary rounded-md text-white"
