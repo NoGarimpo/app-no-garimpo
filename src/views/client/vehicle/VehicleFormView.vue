@@ -38,28 +38,34 @@ const modelOptions = ref<Array<SelectOption>>([])
 async function loadVehiclesTypes() {
   const { data } = await tipoVeiculoStore.fetchTiposVeiculo()
 
-  vehicleTypeOptions.value = (data.value as Array<TipoVeiculo>).map((vehicleType: TipoVeiculo) => ({
-    label: vehicleType.descricao,
-    value: Number(vehicleType.id),
-  }))
+  if (data.value) {
+    vehicleTypeOptions.value = data.value.map((vehicleType: TipoVeiculo) => ({
+      label: vehicleType.descricao,
+      value: Number(vehicleType.id),
+    }))
+  }
 }
 
 async function loadBrands() {
   const { data } = await marcaStore.fetchMarcas()
 
-  brandOptions.value = (data.value as Array<Marca>).map((brand: Marca) => ({
-    label: brand.nome,
-    value: Number(brand.id),
-  }))
+  if (data.value) {
+    brandOptions.value = data.value.map((brand: Marca) => ({
+      label: brand.nome,
+      value: Number(brand.id),
+    }))
+  }
 }
 
-async function loadBrandModels() {
+async function loadModels() {
   const { data } = await modeloStore.fetchModelos(brandCode.value)
 
-  modelOptions.value = (data.value as Array<Modelo>).map((model: Modelo) => ({
-    label: model.nome,
-    value: Number(model.id),
-  }))
+  if (data.value) {
+    modelOptions.value = data.value.map((model: Modelo) => ({
+      label: model.nome,
+      value: Number(model.id),
+    }))
+  }
 }
 
 async function handleSubmit(values: object) {
@@ -75,7 +81,7 @@ async function handleSubmit(values: object) {
 watch(
   () => brandCode.value,
   () => {
-    loadBrandModels()
+    loadModels()
   },
 )
 

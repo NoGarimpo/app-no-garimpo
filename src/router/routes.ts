@@ -99,6 +99,18 @@ export const routes: Array<RouteRecordRaw> = [
         meta: { title: 'Cadastro de Categoria de Serviços', requiresAuth: true },
       },
       {
+        path: 'services/prices',
+        name: 'servicesPrices',
+        component: () => import('@/views/employee/service-price/ServicesPricesListView.vue'),
+        meta: { title: 'Listagem de Preços de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'services/prices/new',
+        name: 'newServicePrice',
+        component: () => import('@/views/employee/service-price/ServicePriceFormView.vue'),
+        meta: { title: 'Cadastro de Preços de Serviços', requiresAuth: true },
+      },
+      {
         path: 'vehicles/types',
         name: 'vehiclesTypes',
         component: () => import('@/views/employee/vehicle-type/VehicleTypesListView.vue'),

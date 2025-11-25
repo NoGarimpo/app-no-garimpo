@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 
 export const servicoValidationSchema = yup.object({
-  id: yup.number().integer(),
+  id: yup.number().integer('Deve ser um número inteiro!'),
   nome: yup.string(),
   descricao: yup.string(),
   ativo: yup.boolean(),
