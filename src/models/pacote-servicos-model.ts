@@ -1,7 +1,7 @@
 export interface PacoteServicos {
   id: number
   nome: string
-  duracao: string
+  duracaoTotalMinutos: string
   valorTotal: number
   fkServicos: Array<number>
 }

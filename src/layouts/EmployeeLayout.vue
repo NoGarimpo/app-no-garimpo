@@ -24,6 +24,11 @@ const menuItems = ref<Array<MenuItem>>([
     route: { name: 'servicesPrices' },
   },
   {
+    label: 'Serviços',
+    icon: 'lucide:cog',
+    route: { name: 'services' },
+  },
+  {
     label: 'Tipos de Veículos',
     icon: 'lucide:layers',
     route: { name: 'vehiclesTypes' },
