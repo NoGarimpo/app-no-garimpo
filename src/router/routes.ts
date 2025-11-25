@@ -87,6 +87,18 @@ export const routes: Array<RouteRecordRaw> = [
         meta: { title: 'Cadastro de Modelos', requiresAuth: true },
       },
       {
+        path: 'services',
+        name: 'services',
+        component: () => import('@/views/employee/service/ServicesListView.vue'),
+        meta: { title: 'Listagem de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'services/new',
+        name: 'newService',
+        component: () => import('@/views/employee/service/ServiceFormView.vue'),
+        meta: { title: 'Cadastro de Serviços', requiresAuth: true },
+      },
+      {
         path: 'services/categories',
         name: 'servicesCategories',
         component: () => import('@/views/employee/service-category/ServicesCategoriesListView.vue'),

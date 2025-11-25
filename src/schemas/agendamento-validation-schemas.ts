@@ -6,7 +6,7 @@ export const agendamentoValidationSchema = yup.object({
   dataInicio: yup.date(),
   dataFimEstimada: yup.date(),
   dataFinalizacao: yup.date(),
-  duracao: yup.string(),
+  duracaoTotalMinutos: yup.string(),
   valorTotal: yup.number(),
   statusAtual: yup.string(),
   observacoes: yup.string(),

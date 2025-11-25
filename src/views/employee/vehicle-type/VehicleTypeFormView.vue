@@ -26,7 +26,7 @@ async function handleSubmit(values: object) {
 
 <template>
   <FormComponent
-    title="Cadastro de Tipo de Veículos"
+    title="Cadastro de Tipos de Veículos"
     :initial-form-values="tipoVeiculosFormValues"
     :form-validation-schema="tipoVeiculosValidationSchema"
     :handle-submit="handleSubmit"

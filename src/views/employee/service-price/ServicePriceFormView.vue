@@ -64,7 +64,7 @@ onMounted(async () => {
 
 <template>
   <FormComponent
-    title="Cadastro de Preço de Serviço"
+    title="Cadastro de Preços de Serviços"
     :initial-form-values="precoServicoFormValues"
     :form-validation-schema="precoServicoValidationSchema"
     :handle-submit="handleSubmit"

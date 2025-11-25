@@ -28,7 +28,7 @@ async function handleSubmit(values: object) {
 
 <template>
   <FormComponent
-    title="Cadastro de Categoria de Serviços"
+    title="Cadastro de Categorias de Serviços"
     :initial-form-values="categoriaServicosFormValues"
     :form-validation-schema="categoriaServicosValidationSchema"
     :handle-submit="handleSubmit"
