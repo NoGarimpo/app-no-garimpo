@@ -1,7 +1,8 @@
 export interface PrecoServico {
-  id: number
+  id?: number
   descricao: string
   valor: number
   ativo: boolean
-  fkServico: number
+  fkServico?: number
+  fkTipoVeiculo?: number
 }

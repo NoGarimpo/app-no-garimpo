@@ -4,7 +4,7 @@ export interface Agendamento {
   dataInicio: string
   dataFimEstimada: string
   dataFinalizacao: string
-  duracao: string
+  duracaoTotalMinutos: string
   valorTotal: number
   statusAtual: string
   observacoes: string

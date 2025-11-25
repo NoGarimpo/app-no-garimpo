@@ -27,6 +27,31 @@ export const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/client',
+    component: () => import('@/layouts/ClientLayout.vue'),
+    redirect: { name: 'clientHome' },
+    children: [
+      {
+        path: '',
+        name: 'clientHome',
+        component: () => import('@/views/client/ClientHomeView.vue'),
+        meta: { title: 'Área de Clientes', requiresAuth: true },
+      },
+      {
+        path: 'vehicles',
+        name: 'clientVehicles',
+        component: () => import('@/views/client/vehicle/VehiclesListView.vue'),
+        meta: { title: 'Listagem de Veículos', requiresAuth: false },
+      },
+      {
+        path: 'vehicles/new',
+        name: 'newClientVehicle',
+        component: () => import('@/views/client/vehicle/VehicleFormView.vue'),
+        meta: { title: 'Cadastro de Veículos', requiresAuth: true },
+      },
+    ],
+  },
+  {
     path: '/employee',
     component: () => import('@/layouts/EmployeeLayout.vue'),
     redirect: { name: 'employeeHome' },
@@ -62,6 +87,18 @@ export const routes: Array<RouteRecordRaw> = [
         meta: { title: 'Cadastro de Modelos', requiresAuth: true },
       },
       {
+        path: 'services',
+        name: 'services',
+        component: () => import('@/views/employee/service/ServicesListView.vue'),
+        meta: { title: 'Listagem de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'services/new',
+        name: 'newService',
+        component: () => import('@/views/employee/service/ServiceFormView.vue'),
+        meta: { title: 'Cadastro de Serviços', requiresAuth: true },
+      },
+      {
         path: 'services/categories',
         name: 'servicesCategories',
         component: () => import('@/views/employee/service-category/ServicesCategoriesListView.vue'),
@@ -72,6 +109,18 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'newServicesCategory',
         component: () => import('@/views/employee/service-category/ServicesCategoryFormView.vue'),
         meta: { title: 'Cadastro de Categoria de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'services/prices',
+        name: 'servicesPrices',
+        component: () => import('@/views/employee/service-price/ServicesPricesListView.vue'),
+        meta: { title: 'Listagem de Preços de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'services/prices/new',
+        name: 'newServicePrice',
+        component: () => import('@/views/employee/service-price/ServicePriceFormView.vue'),
+        meta: { title: 'Cadastro de Preços de Serviços', requiresAuth: true },
       },
       {
         path: 'vehicles/types',

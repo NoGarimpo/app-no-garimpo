@@ -24,7 +24,7 @@ const useVeiculoStore = defineStore('Veiculo', () => {
   }
 
   async function createVeiculo(payload: Veiculo) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+    const { data, statusCode } = await api(`${endpoint}/cadastro`).post(payload).json()
 
     return {
       data,

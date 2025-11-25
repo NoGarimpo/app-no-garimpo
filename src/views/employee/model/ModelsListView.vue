@@ -14,7 +14,17 @@ const marcaStore = useMarcaStore()
 const models = ref<Array<Modelo>>([])
 const brandOptions = ref<Array<SelectOption>>([])
 
-async function loadBrandModels() {
+async function loadBrands() {
+  const { data, statusCode } = await marcaStore.fetchMarcas()
+
+  if (statusCode.value === 200) {
+    return data.value as Array<Marca>
+  } else {
+    return []
+  }
+}
+
+async function loadModels() {
   const { data, statusCode } = await modeloStore.fetchModelos(brandCode.value)
 
   if (statusCode.value === 200) {
@@ -26,22 +36,20 @@ async function loadBrandModels() {
 
 watch(
   () => brandCode.value,
-  () => {
-    loadBrandModels()
+  async () => {
+    await loadModels()
   },
 )
 
 onMounted(async () => {
-  const { data } = await marcaStore.fetchMarcas()
+  const brands = await loadBrands()
 
-  if (data.value) {
-    brandOptions.value = data.value.map((brand: Marca) => ({
-      label: brand.nome,
-      value: Number(brand.id),
-    }))
-  }
+  brandOptions.value = brands.map((brand: Marca) => ({
+    label: brand.nome,
+    value: Number(brand.id),
+  }))
 
-  await loadBrandModels()
+  await loadModels()
 })
 </script>
 

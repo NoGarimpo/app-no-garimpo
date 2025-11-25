@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Marca } from '@/models/marca-model'
+import type { Veiculo } from '@/models/veiculo-model'
 
 const props = defineProps<{
-  brands: Array<Marca>
+  vehicles: Array<Veiculo>
 }>()
 </script>
 
@@ -12,13 +12,17 @@ const props = defineProps<{
       <thead class="text-lg text-base-content font-bold">
         <tr>
           <th>Nº Linha</th>
-          <th>Nome</th>
+          <th>Ano</th>
+          <th>Placa</th>
+          <th>Foto</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(brand, index) in props.brands" :key="brand.id">
+        <tr v-for="(vehicle, index) in props.vehicles" :key="vehicle.id">
           <td>{{ index + 1 }}</td>
-          <td>{{ brand.nome }}</td>
+          <td>{{ vehicle.ano }}</td>
+          <td>{{ vehicle.placa }}</td>
+          <td>{{ vehicle.foto }}</td>
         </tr>
       </tbody>
     </table>

@@ -24,7 +24,7 @@ const useServicoStore = defineStore('Servico', () => {
   }
 
   async function createServico(payload: Servico) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+    const { data, statusCode } = await api(`${endpoint}/criarServico`).post(payload).json()
 
     return {
       data,

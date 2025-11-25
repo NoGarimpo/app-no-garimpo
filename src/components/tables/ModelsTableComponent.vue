@@ -13,14 +13,12 @@ const props = defineProps<{
         <tr>
           <th>Nº Linha</th>
           <th>Nome</th>
-          <th>Ativa</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(model, index) in props.models" :key="model.id">
           <td>{{ index + 1 }}</td>
           <td>{{ model.nome }}</td>
-          <td>Sim</td>
         </tr>
       </tbody>
     </table>

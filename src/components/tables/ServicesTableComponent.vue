@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Marca } from '@/models/marca-model'
+import type { Servico } from '@/models/servico-model'
 
 const props = defineProps<{
-  brands: Array<Marca>
+  services: Array<Servico>
 }>()
 </script>
 
@@ -13,12 +13,14 @@ const props = defineProps<{
         <tr>
           <th>Nº Linha</th>
           <th>Nome</th>
+          <th>Descrição</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(brand, index) in props.brands" :key="brand.id">
+        <tr v-for="(service, index) in props.services" :key="service.id">
           <td>{{ index + 1 }}</td>
-          <td>{{ brand.nome }}</td>
+          <td>{{ service.nome }}</td>
+          <td>{{ service.descricao }}</td>
         </tr>
       </tbody>
     </table>

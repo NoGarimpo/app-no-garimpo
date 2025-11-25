@@ -1,12 +1,12 @@
 import * as yup from 'yup'
 
 export const agendamentoValidationSchema = yup.object({
-  id: yup.number().integer(),
+  id: yup.number().integer('Deve ser um número inteiro!'),
   dataRequisicao: yup.date(),
   dataInicio: yup.date(),
   dataFimEstimada: yup.date(),
   dataFinalizacao: yup.date(),
-  duracao: yup.string(),
+  duracaoTotalMinutos: yup.string(),
   valorTotal: yup.number(),
   statusAtual: yup.string(),
   observacoes: yup.string(),

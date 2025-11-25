@@ -21,7 +21,10 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     ServiceCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
     ServicesCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
+    ServicesPricesTableComponent: typeof import('./components/tables/ServicesPricesTableComponent.vue')['default']
+    ServicesTableComponent: typeof import('./components/tables/ServicesTableComponent.vue')['default']
     TableComponent: typeof import('./components/tables/TableComponent.vue')['default']
+    VehiclesTableComponent: typeof import('./components/tables/VehiclesTableComponent.vue')['default']
     VehiclesTypesTableComponent: typeof import('./components/tables/VehiclesTypesTableComponent.vue')['default']
   }
 }
