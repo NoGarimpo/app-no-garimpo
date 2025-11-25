@@ -18,7 +18,7 @@ onMounted(async () => {
 
 <template>
   <section class="w-full min-h-full flex flex-col items-center justify-center gap-2 p-4">
-    <img class="w-140" src="/favicon.svg" alt="Logo" />
+    <img class="w-140" src="/logo.svg" alt="Logo" />
     <div class="flex items-center justify-center gap-4">
       <ButtonComponent
         class="bg-transparent border border-base-content rounded-full hover:bg-primary hover:border-base-100 hover:text-white"

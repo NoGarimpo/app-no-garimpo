@@ -7,10 +7,14 @@ const router = createRouter({
   history: createWebHistory(),
 })
 
-router.beforeEach((to, from, next) => {
+function verifyAuth(routeIsProtected: boolean) {
   const authStore = useAuthStore()
 
-  if (Boolean(to.meta.requiresAuth) && authStore.loginToken === '') {
+  return routeIsProtected && authStore.loginToken === ''
+}
+
+router.beforeEach((to, from, next) => {
+  if (verifyAuth(Boolean(to.meta.requiresAuth))) {
     next({ name: 'home' })
   }
 

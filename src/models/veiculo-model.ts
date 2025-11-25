@@ -1,11 +1,11 @@
 export interface Veiculo {
-  id: number
+  id?: number
   placa: string
-  ano: number
+  ano?: number
   foto: string
   ativo: boolean
-  fkTipoVeiculo: number
-  fkCliente: number
-  fkMarca: number
-  fkModelo: number
+  fkTipoVeiculo?: number
+  fkCliente?: number
+  fkMarca?: number
+  fkModelo?: number
 }
