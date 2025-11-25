@@ -7,6 +7,7 @@ const endpoint = '/usuarios'
 
 const useAuthStore = defineStore('Auth', () => {
   const loginToken = useSessionStorage('loginToken', '')
+  const loginUser = useSessionStorage('loginUser', { id: 0, nome: '', email: '', cargo: '' })
 
   async function register(payload: Register) {
     const { data, statusCode } = await api(`${endpoint}/cadastrar`).post(payload).json()
@@ -20,7 +21,10 @@ const useAuthStore = defineStore('Auth', () => {
   async function login(payload: Login) {
     const { data, statusCode } = await api(`${endpoint}/login`).post(payload).json<LoginResponse>()
 
-    loginToken.value = data.value?.token
+    if (data.value) {
+      loginToken.value = data.value.token
+      loginUser.value = data.value.user
+    }
 
     return {
       data,
@@ -32,6 +36,7 @@ const useAuthStore = defineStore('Auth', () => {
     const { data, statusCode } = await api(`${endpoint}/logout`).post().json()
 
     loginToken.value = ''
+    loginUser.value = resetUser()
 
     return {
       data,
@@ -39,8 +44,13 @@ const useAuthStore = defineStore('Auth', () => {
     }
   }
 
+  function resetUser() {
+    return { id: 0, nome: '', email: '', cargo: '' }
+  }
+
   return {
     loginToken,
+    loginUser,
     register,
     login,
     logout,

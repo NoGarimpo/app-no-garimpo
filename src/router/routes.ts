@@ -27,6 +27,31 @@ export const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/client',
+    component: () => import('@/layouts/ClientLayout.vue'),
+    redirect: { name: 'clientHome' },
+    children: [
+      {
+        path: '',
+        name: 'clientHome',
+        component: () => import('@/views/client/ClientHomeView.vue'),
+        meta: { title: 'Área de Clientes', requiresAuth: true },
+      },
+      {
+        path: 'vehicles',
+        name: 'clientVehicles',
+        component: () => import('@/views/client/vehicle/VehiclesListView.vue'),
+        meta: { title: 'Listagem de Veículos', requiresAuth: false },
+      },
+      {
+        path: 'vehicles/new',
+        name: 'newClientVehicle',
+        component: () => import('@/views/client/vehicle/VehicleFormView.vue'),
+        meta: { title: 'Cadastro de Veículos', requiresAuth: true },
+      },
+    ],
+  },
+  {
     path: '/employee',
     component: () => import('@/layouts/EmployeeLayout.vue'),
     redirect: { name: 'employeeHome' },

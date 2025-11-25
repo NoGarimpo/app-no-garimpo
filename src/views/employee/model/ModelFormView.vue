@@ -18,6 +18,17 @@ const modeloFormValues = ref<Modelo>({
 
 const brandOptions = ref<Array<SelectOption>>([])
 
+async function loadBrands() {
+  const { data } = await marcaStore.fetchMarcas()
+
+  if (data.value) {
+    brandOptions.value = data.value.map((brand: Marca) => ({
+      label: brand.nome,
+      value: Number(brand.id),
+    }))
+  }
+}
+
 async function handleSubmit(values: object) {
   const { statusCode } = await modeloStore.createModelo(values as Modelo)
 
@@ -29,14 +40,7 @@ async function handleSubmit(values: object) {
 }
 
 onMounted(async () => {
-  const { data } = await marcaStore.fetchMarcas()
-
-  if (data.value) {
-    brandOptions.value = data.value.map((brand: Marca) => ({
-      label: brand.nome,
-      value: Number(brand.id),
-    }))
-  }
+  await loadBrands()
 })
 </script>
 

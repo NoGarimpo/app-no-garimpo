@@ -4,24 +4,9 @@ import type { MenuItem } from '@/models/menu-item-model'
 
 const menuItems = ref<Array<MenuItem>>([
   {
-    label: 'Categorias de Serviços',
-    icon: 'lucide:layers',
-    route: { name: 'servicesCategories' },
-  },
-  {
-    label: 'Marcas',
-    icon: 'lucide:tag',
-    route: { name: 'brands' },
-  },
-  {
-    label: 'Modelos',
-    icon: 'lucide:tags',
-    route: { name: 'models' },
-  },
-  {
-    label: 'Tipos de Veículos',
-    icon: 'lucide:layers',
-    route: { name: 'vehiclesTypes' },
+    label: 'Meus Veículos',
+    icon: 'lucide:car',
+    route: { name: 'clientVehicles' },
   },
 ])
 </script>
@@ -31,7 +16,7 @@ const menuItems = ref<Array<MenuItem>>([
     <nav class="w-84 h-full flex flex-col gap-4 border-r border-base-content p-4">
       <img class="border border-base-content rounded-md" src="/logo.svg" alt="Logo" />
       <MenuItemComponent
-        :item="{ label: 'Home', icon: 'lucide:home', route: { name: 'employeeHome' } }"
+        :item="{ label: 'Home', icon: 'lucide:home', route: { name: 'clientHome' } }"
       />
       <p>Menu</p>
       <MenuItemComponent v-for="(item, index) in menuItems" :key="index" :item="item" />

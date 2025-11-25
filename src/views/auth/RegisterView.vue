@@ -4,8 +4,12 @@ import { Form } from 'vee-validate'
 import { registerValidationSchema } from '@/schemas/auth-validation-schemas'
 import type { Register } from '@/models/auth-model'
 import { useAuthStore } from '@/stores/auth-store'
+import { useRouter } from 'vue-router'
+import { toast } from 'vue3-toastify'
 
 const authStore = useAuthStore()
+
+const router = useRouter()
 
 const registerFormValues = ref<Register>({
   nome: '',
@@ -14,14 +18,20 @@ const registerFormValues = ref<Register>({
 })
 
 async function handleSubmit(payload: object) {
-  await authStore.register(payload as Register)
+  const { statusCode } = await authStore.register(payload as Register)
+
+  if (statusCode.value === 201) {
+    router.push({ name: 'userLogin' })
+  } else {
+    toast.error('Erro ao realizar o cadastro de usuário!')
+  }
 }
 </script>
 
 <template>
   <section class="w-full flex flex-col items-center justify-center gap-2 p-4">
     <div class="flex items-center justify-center">
-      <img class="w-100" src="/favicon.svg" alt="Logo" />
+      <img class="w-100" src="/logo.svg" alt="Logo" />
     </div>
     <Form
       :initial-values="registerFormValues"

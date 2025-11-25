@@ -5,8 +5,11 @@ import { loginValidationSchema } from '@/schemas/auth-validation-schemas'
 import type { Login } from '@/models/auth-model'
 import { useAuthStore } from '@/stores/auth-store'
 import { toast } from 'vue3-toastify'
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
+
+const router = useRouter()
 
 const loginFormValues = ref<Login>({
   email: '',
@@ -17,7 +20,19 @@ async function handleSubmit(payload: object) {
   await authStore.login(payload as Login)
 
   if (authStore.loginToken !== '') {
-    toast.success('Login realizado com sucesso!')
+    switch (authStore.loginUser.cargo) {
+      case 'Cliente':
+        router.push({ name: 'clientHome' })
+        break
+
+      case 'Funcionário':
+        router.push({ name: 'employeeHome' })
+        break
+
+      default:
+        router.push({ name: 'home' })
+        break
+    }
   } else {
     toast.error('Erro ao realizar o login!')
   }
@@ -27,7 +42,7 @@ async function handleSubmit(payload: object) {
 <template>
   <section class="w-full flex flex-col items-center justify-center gap-2 p-4">
     <div class="flex items-center justify-center">
-      <img class="w-100" src="/favicon.svg" alt="Logo" />
+      <img class="w-100" src="/logo.svg" alt="Logo" />
     </div>
     <Form
       :initial-values="loginFormValues"

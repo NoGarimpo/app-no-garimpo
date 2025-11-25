@@ -22,6 +22,7 @@ declare module 'vue' {
     ServiceCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
     ServicesCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
     TableComponent: typeof import('./components/tables/TableComponent.vue')['default']
+    VehiclesTableComponent: typeof import('./components/tables/VehiclesTableComponent.vue')['default']
     VehiclesTypesTableComponent: typeof import('./components/tables/VehiclesTypesTableComponent.vue')['default']
   }
 }
