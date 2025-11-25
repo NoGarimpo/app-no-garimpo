@@ -5,8 +5,12 @@ import type { PrecoServico } from '@/models/preco-servico-model'
 const endpoint: string = '/precos-servico'
 
 const usePrecoServicoStore = defineStore('PrecoServico', () => {
-  async function fetchPrecosServico() {
-    const { data, statusCode } = await api(`${endpoint}`).get().json<Array<PrecoServico>>()
+  async function fetchPrecosServico(fkServico: number, fkTipoVeiculo: number) {
+    const { data, statusCode } = await api(
+      `${endpoint}?fkServico=${fkServico}&fkTipoVeiculo=${fkTipoVeiculo}`,
+    )
+      .get()
+      .json<Array<PrecoServico>>()
 
     return {
       data,
@@ -24,7 +28,7 @@ const usePrecoServicoStore = defineStore('PrecoServico', () => {
   }
 
   async function createPrecoServico(payload: PrecoServico) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+    const { data, statusCode } = await api(`${endpoint}/criarServico`).post(payload).json()
 
     return {
       data,
