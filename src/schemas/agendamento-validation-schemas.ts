@@ -10,9 +10,8 @@ export const agendamentoValidationSchema = yup.object({
   valorTotal: yup.number(),
   statusAtual: yup.string(),
   observacoes: yup.string(),
-  fkServicos: yup.array(yup.number()),
   fkCliente: yup.number().integer('Deve ser um número inteiro!'),
   fkFuncionario: yup.number().integer('Deve ser um número inteiro!'),
-  fkVeiculo: yup.number().integer('Deve ser um número inteiro!'),
+  fkVeiculo: yup.number().integer('Deve ser um número inteiro!').required('Campo obrigatório!'),
   fkPacoteServicos: yup.number().integer('Deve ser um número inteiro!'),
 })

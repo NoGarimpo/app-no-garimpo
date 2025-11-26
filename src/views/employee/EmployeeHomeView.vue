@@ -17,7 +17,9 @@ async function handleLogout() {
 <template>
   <div class="flex flex-col items-center justify-center gap-8">
     <h1 class="text-4xl text-center text-primary font-extrabold">Área de Funcionários</h1>
-    <p class="text-xl text-center">Bem vindo(a) à parte de gerência.</p>
+    <p class="text-xl text-center">
+      Bem vindo(a), {{ authStore.loginUser.nome }}, à parte de gerência.
+    </p>
     <p class="text-xl text-center">
       Utilize o menu lateral para acessar dados de marcas, modelos, categorias de serviços, etc.
     </p>

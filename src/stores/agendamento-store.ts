@@ -1,12 +1,32 @@
 import { defineStore } from 'pinia'
 import { api } from '@/composables/api'
-import type { Agendamento } from '@/models/agendamento-model'
+import type { Agendamento, AgendamentoPayload } from '@/models/agendamento-model'
 
 const endpoint: string = '/agendamentos'
 
 const useAgendamentoStore = defineStore('Agendamento', () => {
   async function fetchAgendamentos() {
     const { data, statusCode } = await api(`${endpoint}`).get().json<Array<Agendamento>>()
+
+    return {
+      data,
+      statusCode,
+    }
+  }
+
+  async function fetchTodayAgendamentos() {
+    const { data, statusCode } = await api(`${endpoint}/hoje`).get().json<Array<Agendamento>>()
+
+    return {
+      data,
+      statusCode,
+    }
+  }
+
+  async function confirmAgendamento(id: number) {
+    const { data, statusCode } = await api(`${endpoint}/${id}/status`)
+      .patch({ status: 'Em andamento' })
+      .json()
 
     return {
       data,
@@ -23,8 +43,8 @@ const useAgendamentoStore = defineStore('Agendamento', () => {
     }
   }
 
-  async function createAgendamento(payload: Agendamento) {
-    const { data, statusCode } = await api(`${endpoint}`).post(payload).json()
+  async function createAgendamento(payload: AgendamentoPayload) {
+    const { data, statusCode } = await api(`${endpoint}/CriarAgendamento`).post(payload).json()
 
     return {
       data,
@@ -32,7 +52,7 @@ const useAgendamentoStore = defineStore('Agendamento', () => {
     }
   }
 
-  async function updateAgendamento(payload: Agendamento) {
+  async function updateAgendamento(payload: AgendamentoPayload) {
     const { data, statusCode } = await api(`${endpoint}`).patch(payload).json()
 
     return {
@@ -52,6 +72,8 @@ const useAgendamentoStore = defineStore('Agendamento', () => {
 
   return {
     fetchAgendamentos,
+    fetchTodayAgendamentos,
+    confirmAgendamento,
     getAgendamento,
     createAgendamento,
     updateAgendamento,

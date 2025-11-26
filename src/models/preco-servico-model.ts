@@ -6,3 +6,8 @@ export interface PrecoServico {
   fkServico?: number
   fkTipoVeiculo?: number
 }
+
+export interface PrecoServicoResponse {
+  valor: number
+  duracao_minutos: number
+}
