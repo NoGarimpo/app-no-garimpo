@@ -19,6 +19,8 @@ declare module 'vue' {
     ModelsTableComponent: typeof import('./components/tables/ModelsTableComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SchedulingsTableComponent: typeof import('./components/tables/SchedulingsTableComponent.vue')['default']
+    SelectServicesComponent: typeof import('./components/forms/SelectServicesComponent.vue')['default']
     ServiceCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
     ServicesCategoriesTableComponent: typeof import('./components/tables/ServicesCategoriesTableComponent.vue')['default']
     ServicesPricesTableComponent: typeof import('./components/tables/ServicesPricesTableComponent.vue')['default']

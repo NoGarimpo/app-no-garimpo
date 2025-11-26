@@ -38,6 +38,24 @@ export const routes: Array<RouteRecordRaw> = [
         meta: { title: 'Área de Clientes', requiresAuth: true },
       },
       {
+        path: 'services/prices/list',
+        name: 'listServicesPrices',
+        component: () => import('@/views/employee/service-price/ServicesPricesListView.vue'),
+        meta: { title: 'Listagem de Preços de Serviços', requiresAuth: true },
+      },
+      {
+        path: 'schedulings',
+        name: 'schedulings',
+        component: () => import('@/views/client/scheduling/SchedulingsListView.vue'),
+        meta: { title: 'Listagem de Agendamentos', requiresAuth: true },
+      },
+      {
+        path: 'schedulings/new',
+        name: 'newScheduling',
+        component: () => import('@/views/client/scheduling/SchedulingFormView.vue'),
+        meta: { title: 'Cadastro de Agendamentos', requiresAuth: true },
+      },
+      {
         path: 'vehicles',
         name: 'clientVehicles',
         component: () => import('@/views/client/vehicle/VehiclesListView.vue'),
@@ -85,6 +103,12 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'newModel',
         component: () => import('@/views/employee/model/ModelFormView.vue'),
         meta: { title: 'Cadastro de Modelos', requiresAuth: true },
+      },
+      {
+        path: 'schedulings/manage',
+        name: 'manageSchedulings',
+        component: () => import('@/views/employee/scheduling/SchedulingsManagementView.vue'),
+        meta: { title: 'Agendamentos de Hoje', requiresAuth: true },
       },
       {
         path: 'services',

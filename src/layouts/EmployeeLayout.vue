@@ -43,6 +43,13 @@ const menuItems = ref<Array<MenuItem>>([
       <MenuItemComponent
         :item="{ label: 'Home', icon: 'lucide:home', route: { name: 'employeeHome' } }"
       />
+      <MenuItemComponent
+        :item="{
+          label: 'Atendimentos',
+          icon: 'lucide:calendar',
+          route: { name: 'manageSchedulings' },
+        }"
+      />
       <p>Menu</p>
       <MenuItemComponent v-for="(item, index) in menuItems" :key="index" :item="item" />
     </nav>

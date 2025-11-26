@@ -4,9 +4,19 @@ import type { MenuItem } from '@/models/menu-item-model'
 
 const menuItems = ref<Array<MenuItem>>([
   {
+    label: 'Meus Agendamentos',
+    icon: 'lucide:calendar',
+    route: { name: 'schedulings' },
+  },
+  {
     label: 'Meus Veículos',
     icon: 'lucide:car',
     route: { name: 'clientVehicles' },
+  },
+  {
+    label: 'Preços de Serviços',
+    icon: 'lucide:dollar-sign',
+    route: { name: 'listServicesPrices' },
   },
 ])
 </script>

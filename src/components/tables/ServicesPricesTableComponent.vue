@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { PrecoServico } from '@/models/preco-servico-model'
+import type { PrecoServicoResponse } from '@/models/preco-servico-model'
 
 const props = defineProps<{
-  servicesPrices: Array<PrecoServico>
+  servicePrice: PrecoServicoResponse | null
 }>()
 </script>
 
@@ -11,16 +11,14 @@ const props = defineProps<{
     <table class="table table-lg">
       <thead class="text-lg text-base-content font-bold">
         <tr>
-          <th>Nº Linha</th>
           <th>Valor</th>
-          <th>Descrição</th>
+          <th>Duração do Serviço (Minutos)</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(servicesPrice, index) in props.servicesPrices" :key="servicesPrice.id">
-          <td>{{ index + 1 }}</td>
-          <td>{{ servicesPrice.valor }}</td>
-          <td>{{ servicesPrice.descricao }}</td>
+        <tr>
+          <td>R${{ props.servicePrice?.valor }}</td>
+          <td>{{ props.servicePrice?.duracao_minutos }} minutos</td>
         </tr>
       </tbody>
     </table>

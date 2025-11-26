@@ -14,7 +14,6 @@ const props = defineProps<{
           <th>Nº Linha</th>
           <th>Ano</th>
           <th>Placa</th>
-          <th>Foto</th>
         </tr>
       </thead>
       <tbody>
@@ -22,7 +21,6 @@ const props = defineProps<{
           <td>{{ index + 1 }}</td>
           <td>{{ vehicle.ano }}</td>
           <td>{{ vehicle.placa }}</td>
-          <td>{{ vehicle.foto }}</td>
         </tr>
       </tbody>
     </table>
