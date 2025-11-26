@@ -2,7 +2,7 @@
 const props = defineProps<{
   title: string
   buttonLabel: string
-  registrationRoute: { name: string }
+  registrationRoute: { name: string } | null
 }>()
 </script>
 
@@ -11,6 +11,7 @@ const props = defineProps<{
     <div class="flex items-center justify-between">
       <h1 class="text-3xl text-primary font-extrabold">{{ props.title }}</h1>
       <ButtonComponent
+        v-if="props.registrationRoute !== null"
         type="link"
         :label="props.buttonLabel"
         icon="lucide:plus"

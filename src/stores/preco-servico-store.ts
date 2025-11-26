@@ -1,25 +1,16 @@
 import { defineStore } from 'pinia'
 import { api } from '@/composables/api'
-import type { PrecoServico } from '@/models/preco-servico-model'
+import type { PrecoServico, PrecoServicoResponse } from '@/models/preco-servico-model'
 
 const endpoint: string = '/precos-servico'
 
 const usePrecoServicoStore = defineStore('PrecoServico', () => {
-  async function fetchPrecosServico(fkServico: number, fkTipoVeiculo: number) {
+  async function getPrecoServico(fkServico: number, fkTipoVeiculo: number) {
     const { data, statusCode } = await api(
       `${endpoint}?fkServico=${fkServico}&fkTipoVeiculo=${fkTipoVeiculo}`,
     )
       .get()
-      .json<Array<PrecoServico>>()
-
-    return {
-      data,
-      statusCode,
-    }
-  }
-
-  async function getPrecoServico(id: number) {
-    const { data, statusCode } = await api(`${endpoint}/${id}`).get().json<PrecoServico>()
+      .json<PrecoServicoResponse>()
 
     return {
       data,
@@ -55,7 +46,6 @@ const usePrecoServicoStore = defineStore('PrecoServico', () => {
   }
 
   return {
-    fetchPrecosServico,
     getPrecoServico,
     createPrecoServico,
     updatePrecoServico,

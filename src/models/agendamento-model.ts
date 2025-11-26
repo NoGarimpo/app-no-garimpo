@@ -1,16 +1,22 @@
+export interface AgendamentoPayload {
+  dataRequisicao: string
+  observacoes: string
+  fkCliente?: number
+  fkVeiculo?: number
+  servicos?: Array<number>
+}
+
 export interface Agendamento {
-  id: number
+  id?: number
   dataRequisicao: string
   dataInicio: string
   dataFimEstimada: string
   dataFinalizacao: string
-  duracaoTotalMinutos: string
   valorTotal: number
   statusAtual: string
   observacoes: string
-  fkServicos: Array<number>
-  fkCliente: number
-  fkFuncionario: number
-  fkVeiculo: number
-  fkPacoteServicos: number
+  fkCliente?: number
+  fkFuncionario?: number
+  fkVeiculo?: number
+  fkPacoteServicos?: number
 }

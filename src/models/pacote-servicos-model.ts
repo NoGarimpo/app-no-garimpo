@@ -1,5 +1,5 @@
 export interface PacoteServicos {
-  id: number
+  id?: number
   nome: string
   duracaoTotalMinutos: string
   valorTotal: number
